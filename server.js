@@ -1,9 +1,11 @@
 // Dependencies
 var express = require("express");
-var mongojs = require("mongojs");
+// var mongojs = require("mongojs");
 
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
+
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
 var app = express();
@@ -16,8 +18,8 @@ app.use(express.static("public"));
 
 
 // Database configuration
-var databaseUrl = "metalnews";
-var collections = ["articles"];
+// var databaseUrl = "metalnews";
+// var collections = ["articles"];
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 
@@ -38,10 +40,10 @@ require("./routes/html-routes")(app);
 
 
 // Hook mongojs configuration to the db variable
-var db = mongojs(databaseUrl, collections);
-db.on("error", function(error) {
-  console.log("Database Error:", error);
-});
+// var db = mongojs(databaseUrl, collections);
+// db.on("error", function(error) {
+//   console.log("Database Error:", error);
+// });
 
 // Main route (simple Hello World Message)
 // app.get("/", function(req, res) {
@@ -102,7 +104,6 @@ db.on("error", function(error) {
 // });
 
 
-// Listen on port 3000
-app.listen(3000, function() {
-  console.log("App running on port 3000!");
+app.listen(PORT, function() {
+  console.log("App running on port " + PORT + "!");
 });
