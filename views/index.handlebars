@@ -1,0 +1,15 @@
+<div class="container centered">
+  <h1 class="title has-text-danger is-size-2">
+    Metal Articles
+  </h1>
+</div>
+
+<section class="section">
+  <div class="container">
+    {{#if data}}
+    {{#each data}}
+    {{> cards/scraped-card}}
+    {{/each}}
+    {{else}}
+    <h1>No Articles Scraped</h1>
+    {{/if}}
